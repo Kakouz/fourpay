@@ -1,4 +1,4 @@
-package br.com.fourcamp.fourpay.controller;
+package br.com.fourcamp.fourpay.service;
 
 import java.util.List;
 

@@ -6,6 +6,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,9 +19,13 @@ import br.com.fourcamp.fourpay.dto.ClientAddressDTO;
 import br.com.fourcamp.fourpay.model.Address;
 import br.com.fourcamp.fourpay.model.Client;
 import br.com.fourcamp.fourpay.service.ClientService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/client")
+@Api(value="API REST Client")
+@CrossOrigin(origins = "*")
 public class ClientController {
 	@Autowired
 	ClientService clientService;
@@ -28,11 +33,13 @@ public class ClientController {
 	AddressController addressController;
 
 	@GetMapping
+	@ApiOperation(value = "Retorna todos os clientes")
 	public ResponseEntity<List<Client>> getAllClients() {
 		return ResponseEntity.status(HttpStatus.OK).body(clientService.findAll());
 	}
 	
 	@PostMapping
+	@ApiOperation(value = "Cria um novo cliente")
 	public ResponseEntity<Object> createClient(@RequestBody ClientAddressDTO clientAddressDTO) {
 		Client client = new Client();
 		BeanUtils.copyProperties(clientAddressDTO, client);
@@ -44,6 +51,7 @@ public class ClientController {
 	}
 	
 	@PutMapping("/{id}")
+	@ApiOperation(value = "Atualiza um cliente pelo id")
 	public ResponseEntity<Object> updateClient(@PathVariable Integer id, @RequestBody ClientAddressDTO clientAddressDTO) {
 		Client client = new Client();
 		BeanUtils.copyProperties(clientAddressDTO, client);
