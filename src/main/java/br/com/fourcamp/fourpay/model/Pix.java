@@ -1,5 +1,7 @@
 package br.com.fourcamp.fourpay.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,7 +12,8 @@ import javax.persistence.ManyToOne;
 import br.com.fourcamp.fourpay.enums.PixKeyType;
 
 @Entity
-public class Pix {
+public class Pix implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -61,6 +64,5 @@ public class Pix {
 	public void setAccount(CheckingsAccount account) {
 		this.account = account;
 	}
-	
 
 }
