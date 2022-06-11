@@ -16,12 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.fourcamp.fourpay.dto.TransactionDTO;
 import br.com.fourcamp.fourpay.model.Transaction;
 import br.com.fourcamp.fourpay.service.TransactionService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @RequestMapping("/transaction")
-@Api(value="API REST Transaction")
+@Tag(name="API REST Transaction")
 @CrossOrigin(origins = "*")
 public class TransactionController {
 
@@ -29,13 +29,13 @@ public class TransactionController {
 	TransactionService transactionService;
 
 	@GetMapping
-	@ApiOperation(value = "Retorna todas as transações")
+	@Operation(summary = "Retorna todas as transações")
 	public List<Transaction> getAllTransactions() {
 		return transactionService.findAll();
 	}
 
 	@PostMapping
-	@ApiOperation(value = "Cria uma nova transação")
+	@Operation(summary = "Cria uma nova transação")
 	public Transaction createNewTransaction(@RequestBody TransactionDTO transactionDto) {
 		Transaction transaction = new Transaction();
 		BeanUtils.copyProperties(transactionDto, transaction);
@@ -44,7 +44,7 @@ public class TransactionController {
 	}
 
 	@PutMapping
-	@ApiOperation(value = "Atualiza uma transação")
+	@Operation(summary = "Atualiza uma transação")
 	public Transaction updateTransaction(@RequestBody TransactionDTO transactionDto) {
 		Transaction transaction = new Transaction();
 		BeanUtils.copyProperties(transactionDto, transaction);

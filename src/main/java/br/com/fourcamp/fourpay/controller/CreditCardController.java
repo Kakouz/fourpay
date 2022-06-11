@@ -15,25 +15,25 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.fourcamp.fourpay.dto.CreditCardDTO;
 import br.com.fourcamp.fourpay.model.CreditCard;
 import br.com.fourcamp.fourpay.service.CreditCardService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @RequestMapping("/card/credit")
-@Api(value="API REST Credit Card")
+@Tag(name="API REST Credit Card")
 @CrossOrigin(origins = "*")
 public class CreditCardController {
 	@Autowired
 	CreditCardService creditCardService;
 	
 	@GetMapping
-	@ApiOperation(value = "Retorna todos os cartões de credito")
+	@Operation(summary = "Retorna todos os cartões de credito")
 	public List<CreditCard> getAllCards() {
 		return creditCardService.findAll();
 	}
 	
 	@PostMapping
-	@ApiOperation(value = "Cria um cartão de credito")
+	@Operation(summary = "Cria um cartão de credito")
 	public CreditCard createCreditCard(@RequestBody CreditCardDTO creditCardDto) {
 		CreditCard creditCard = new CreditCard();
 		BeanUtils.copyProperties(creditCardDto, creditCard);
@@ -41,7 +41,7 @@ public class CreditCardController {
 	}
 	
 	@PutMapping
-	@ApiOperation(value = "Atualiza um cartão de credito")
+	@Operation(summary = "Atualiza um cartão de credito")
 	public CreditCard updateCreditCard(@RequestBody CreditCardDTO creditCardDto) {
 		CreditCard creditCard = new CreditCard();
 		BeanUtils.copyProperties(creditCardDto, creditCard);

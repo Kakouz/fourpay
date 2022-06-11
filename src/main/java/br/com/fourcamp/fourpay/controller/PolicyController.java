@@ -15,25 +15,25 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.fourcamp.fourpay.dto.PolicyDTO;
 import br.com.fourcamp.fourpay.model.Policy;
 import br.com.fourcamp.fourpay.service.PolicyService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @RequestMapping("/policy")
-@Api(value="API REST Policy")
+@Tag(name="API REST Policy")
 @CrossOrigin(origins = "*")
 public class PolicyController {
 	@Autowired
 	PolicyService policyService;
 	
 	@GetMapping
-	@ApiOperation(value = "Retorna todas as apolices de seguro")
+	@Operation(summary = "Retorna todas as apolices de seguro")
 	public List<Policy> getAllPolicy() {
 		return policyService.findAll();
 	}
 	
 	@PostMapping
-	@ApiOperation(value = "Cria uma nova apolice de seguro")
+	@Operation(summary = "Cria uma nova apolice de seguro")
 	public Policy createPolicy(@RequestBody PolicyDTO policyDTO) {
 		Policy policy = new Policy();
 		BeanUtils.copyProperties(policyDTO, policy);
@@ -41,7 +41,7 @@ public class PolicyController {
 	}
 	
 	@PutMapping
-	@ApiOperation(value = "Atualiza uma apolice de seguro")
+	@Operation(summary = "Atualiza uma apolice de seguro")
 	public Policy updatePolicy(@RequestBody PolicyDTO policyDTO) {
 		Policy policy = new Policy();
 		BeanUtils.copyProperties(policyDTO, policy);

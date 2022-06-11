@@ -15,12 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.fourcamp.fourpay.dto.SavingsAccountDTO;
 import br.com.fourcamp.fourpay.model.SavingsAccount;
 import br.com.fourcamp.fourpay.service.SavingsAccountService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @RequestMapping("/account/savings")
-@Api(value="API REST Savings Account")
+@Tag(name="API REST Savings Account")
 @CrossOrigin(origins = "*")
 public class SavingsAccountController {
 
@@ -28,13 +28,13 @@ public class SavingsAccountController {
 	SavingsAccountService savingsAccountService;
 	
 	@GetMapping
-	@ApiOperation(value = "Retorna todas as contas poupança")
+	@Operation(summary = "Retorna todas as contas poupança")
 	public List<SavingsAccount> getSavingsAccount() {
 		return savingsAccountService.findAll();
 	}
 	
 	@PostMapping
-	@ApiOperation(value = "Cria uma nova conta poupança")
+	@Operation(summary = "Cria uma nova conta poupança")
 	public SavingsAccount createSavingsAccount(@RequestBody SavingsAccountDTO savingsAccountDto) {
 		SavingsAccount savingsAccount = new SavingsAccount();
 		BeanUtils.copyProperties(savingsAccountDto, savingsAccount);
@@ -42,7 +42,7 @@ public class SavingsAccountController {
 	}
 	
 	@PutMapping
-	@ApiOperation(value = "Atualiza uma conta poupança")
+	@Operation(summary = "Atualiza uma conta poupança")
 	public SavingsAccount updateSavingsAccount(@RequestBody SavingsAccountDTO savingsAccountDto) {
 		SavingsAccount savingsAccount = new SavingsAccount();
 		BeanUtils.copyProperties(savingsAccountDto, savingsAccount);

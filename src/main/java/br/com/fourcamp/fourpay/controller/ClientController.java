@@ -19,12 +19,12 @@ import br.com.fourcamp.fourpay.dto.ClientAddressDTO;
 import br.com.fourcamp.fourpay.model.Address;
 import br.com.fourcamp.fourpay.model.Client;
 import br.com.fourcamp.fourpay.service.ClientService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @RequestMapping("/client")
-@Api(value="API REST Client")
+@Tag(name="API REST Client")
 @CrossOrigin(origins = "*")
 public class ClientController {
 	@Autowired
@@ -33,13 +33,13 @@ public class ClientController {
 	AddressController addressController;
 
 	@GetMapping
-	@ApiOperation(value = "Retorna todos os clientes")
+	@Operation(summary = "Retorna todos os clientes")
 	public ResponseEntity<List<Client>> getAllClients() {
 		return ResponseEntity.status(HttpStatus.OK).body(clientService.findAll());
 	}
 	
 	@PostMapping
-	@ApiOperation(value = "Cria um novo cliente")
+	@Operation(summary = "Cria um novo cliente")
 	public ResponseEntity<Object> createClient(@RequestBody ClientAddressDTO clientAddressDTO) {
 		Client client = new Client();
 		BeanUtils.copyProperties(clientAddressDTO, client);
@@ -51,7 +51,7 @@ public class ClientController {
 	}
 	
 	@PutMapping("/{id}")
-	@ApiOperation(value = "Atualiza um cliente pelo id")
+	@Operation(summary = "Atualiza um cliente pelo id")
 	public ResponseEntity<Object> updateClient(@PathVariable Integer id, @RequestBody ClientAddressDTO clientAddressDTO) {
 		Client client = new Client();
 		BeanUtils.copyProperties(clientAddressDTO, client);

@@ -14,25 +14,25 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.fourcamp.fourpay.model.DebitCard;
 import br.com.fourcamp.fourpay.service.DebitCardService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @RequestMapping("/card/debit")
-@Api(value="API REST Debit Card")
+@Tag(name="API REST Debit Card")
 @CrossOrigin(origins = "*")
 public class DebitCardController {
 	@Autowired
 	DebitCardService debitCardService;
 	
 	@GetMapping
-	@ApiOperation(value = "Retorna todos os cartões de debito")
+	@Operation(summary = "Retorna todos os cartões de debito")
 	public List<DebitCard> getAllCards() {
 		return debitCardService.findAll();
 	}
 	
 	@PostMapping
-	@ApiOperation(value = "Cria um novo cartão de debito")
+	@Operation(summary = "Cria um novo cartão de debito")
 	public DebitCard createDebitCard(@RequestBody DebitCard DebitCardDto) {
 		DebitCard debitCard = new DebitCard();
 		BeanUtils.copyProperties(DebitCardDto, debitCard);
@@ -40,7 +40,7 @@ public class DebitCardController {
 	}
 	
 	@PutMapping
-	@ApiOperation(value = "Atualiza o cartão de debito")
+	@Operation(summary = "Atualiza o cartão de debito")
 	public DebitCard updateDebitCard(@RequestBody DebitCard DebitCardDto) {
 		DebitCard debitCard = new DebitCard();
 		BeanUtils.copyProperties(DebitCardDto, debitCard);

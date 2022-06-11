@@ -15,12 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.fourcamp.fourpay.dto.InsuranceDTO;
 import br.com.fourcamp.fourpay.model.Insurance;
 import br.com.fourcamp.fourpay.service.InsuranceService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @RequestMapping("/insurance")
-@Api(value="API REST Insurance")
+@Tag(name="API REST Insurance")
 @CrossOrigin(origins = "*")
 public class InsuranceController {
 
@@ -28,13 +28,13 @@ public class InsuranceController {
 	InsuranceService insuranceService;
 	
 	@GetMapping
-	@ApiOperation(value = "Retorna todos os seguros")
+	@Operation(summary = "Retorna todos os seguros")
 	public List<Insurance> getAllInsurance() {
 		return insuranceService.findAll();
 	}
 	
 	@PostMapping
-	@ApiOperation(value = "Cria um novo seguro")
+	@Operation(summary = "Cria um novo seguro")
 	public Insurance createInsurance(@RequestBody InsuranceDTO insuranceDto) {
 		Insurance insurance = new Insurance();
 		BeanUtils.copyProperties(insuranceDto, insurance);
@@ -42,7 +42,7 @@ public class InsuranceController {
 	}
 	
 	@PutMapping
-	@ApiOperation(value = "Atualiza um seguro")
+	@Operation(summary = "Atualiza um seguro")
 	public Insurance updateInsurance(@RequestBody InsuranceDTO insuranceDto) {
 		Insurance insurance = new Insurance();
 		BeanUtils.copyProperties(insuranceDto, insurance);

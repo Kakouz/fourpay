@@ -15,12 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.fourcamp.fourpay.dto.CheckingsAccountDTO;
 import br.com.fourcamp.fourpay.model.CheckingsAccount;
 import br.com.fourcamp.fourpay.service.CheckingsAccountService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @RequestMapping("/account/checkings")
-@Api(value="API REST Checkings Account")
+@Tag(name="API REST Checkings Account")
 @CrossOrigin(origins = "*")
 public class CheckingsAccountController {
 
@@ -28,13 +28,13 @@ public class CheckingsAccountController {
 	CheckingsAccountService checkingsAccountService;
 	
 	@GetMapping
-	@ApiOperation(value = "Retorna todos as contas correntes")
+	@Operation(summary = "Retorna todos as contas correntes")
 	public List<CheckingsAccount> getCheckingsAccount() {
 		return checkingsAccountService.findAll();
 	}
 	
 	@PostMapping
-	@ApiOperation(value = "Cria uma nova conta corrente")
+	@Operation(summary = "Cria uma nova conta corrente")
 	public CheckingsAccount createCheckingsAccount(@RequestBody CheckingsAccountDTO checkingsAccountDTO) {
 		CheckingsAccount checkingsAccount = new CheckingsAccount();
 		BeanUtils.copyProperties(checkingsAccountDTO, checkingsAccount);
@@ -42,7 +42,7 @@ public class CheckingsAccountController {
 	}
 	
 	@PutMapping
-	@ApiOperation(value = "Atualiza uma conta corrente")
+	@Operation(summary = "Atualiza uma conta corrente")
 	public CheckingsAccount updateSavingsAccount(@RequestBody CheckingsAccountDTO checkingsAccountDTO) {
 		CheckingsAccount checkingsAccount = new CheckingsAccount();
 		BeanUtils.copyProperties(checkingsAccountDTO, checkingsAccount);

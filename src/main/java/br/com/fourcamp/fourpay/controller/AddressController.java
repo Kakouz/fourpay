@@ -16,12 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.fourcamp.fourpay.dto.AddressDTO;
 import br.com.fourcamp.fourpay.model.Address;
 import br.com.fourcamp.fourpay.service.AddressService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.*;
+
 
 @RestController
 @RequestMapping("/address")
-@Api(value="API REST Address")
+@Tag(name = "API REST Address")
 @CrossOrigin(origins = "*")
 public class AddressController {
 
@@ -29,25 +30,25 @@ public class AddressController {
 	AddressService addressService;
 
 	@PostMapping
-	@ApiOperation(value = "Salva o endereço durante a criação do cliente")
+	@Operation(summary = "Salva o endereço durante a criação do cliente")
 	public Address saveAddressFromClientCreation(Address address) {
 		return addressService.save(address);
 	}
 
 	@PostMapping("/create")
-	@ApiOperation(value = "Salva um endereço")
+	@Operation(summary = "Salva um endereço")
 	public Address saveAddress(@RequestBody Address address) {
 		return addressService.save(address);
 	}
 
 	@GetMapping
-	@ApiOperation(value = "Retorna todos os endereços")
+	@Operation(summary = "Retorna todos os endereços")
 	public List<Address> findAddress() {
 		return addressService.findAll();
 	}
 
 	@PutMapping("/{id}")
-	@ApiOperation(value = "Atualiza o endereço pelo Id dele")
+	@Operation(summary = "Atualiza o endereço pelo Id dele")
 	public Address updateAddress(@PathVariable Integer id, @RequestBody AddressDTO addressDto) {
 		Address address = new Address();
 		BeanUtils.copyProperties(addressDto, address);

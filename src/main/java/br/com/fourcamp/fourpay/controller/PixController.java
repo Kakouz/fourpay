@@ -15,12 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.fourcamp.fourpay.dto.PixDTO;
 import br.com.fourcamp.fourpay.model.Pix;
 import br.com.fourcamp.fourpay.service.PixService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @RequestMapping("/pix")
-@Api(value="API REST Pix")
+@Tag(name="API REST Pix")
 @CrossOrigin(origins = "*")
 public class PixController {
 
@@ -28,7 +28,7 @@ public class PixController {
 	PixService pixService;
 	
 	@PostMapping
-	@ApiOperation(value = "Cria um novo pix")
+	@Operation(summary = "Cria um novo pix")
 	public Pix createPix(@RequestBody PixDTO pixDto) {
 		Pix pix = new Pix();
 		BeanUtils.copyProperties(pixDto, pix);
@@ -36,13 +36,13 @@ public class PixController {
 	}
 	
 	@GetMapping
-	@ApiOperation(value = "Retorna todos os pix cadastrados")
+	@Operation(summary = "Retorna todos os pix cadastrados")
 	public List<Pix> listAllPix() {
 		return pixService.findAll();
 	}
 	
 	@PutMapping
-	@ApiOperation(value = "Atualiza um pix")
+	@Operation(summary = "Atualiza um pix")
 	public Pix updatePix(@RequestBody PixDTO pixDto) {
 		Pix pix = new Pix();
 		BeanUtils.copyProperties(pixDto, pix);
