@@ -21,4 +21,9 @@ public class ClientService {
 		return clientRepository.save(client);
 	}
 
+	public Object updateClient(Client client) {
+		clientRepository.getReferenceById(client.getId());
+		return clientRepository.save(client);
+	}
+
 }
