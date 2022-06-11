@@ -9,18 +9,17 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import br.com.fourcamp.fourpay.enums.PixKeyType;
-
 @Entity
-public class Pix implements Serializable {
+public class Card implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
-	private PixKeyType pixKeyType;
-	private String keyValue;
-	private Boolean isActive;
+	protected Integer id;
+	protected String number;
+	protected String flag;
+	protected String password;
+	protected Boolean isActive;
 	@ManyToOne
 	@JoinColumn(name = "account_id", referencedColumnName = "id")
 	private Account account;
@@ -33,20 +32,28 @@ public class Pix implements Serializable {
 		this.id = id;
 	}
 
-	public PixKeyType getPixKeyType() {
-		return pixKeyType;
+	public String getNumber() {
+		return number;
 	}
 
-	public void setPixKeyType(PixKeyType pixKeyType) {
-		this.pixKeyType = pixKeyType;
+	public void setNumber(String number) {
+		this.number = number;
 	}
 
-	public String getKeyValue() {
-		return keyValue;
+	public String getFlag() {
+		return flag;
 	}
 
-	public void setKeyValue(String keyValue) {
-		this.keyValue = keyValue;
+	public void setFlag(String flag) {
+		this.flag = flag;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public Boolean getIsActive() {
