@@ -9,46 +9,55 @@ public class TransactionDTO {
 	private Double value;
 	private LocalDateTime dateOfTransaction;
 	private TransactionType transactionType;
-	private String payer;
-	private String receiver;
-	
-	
+	private Integer payerAccountId;
+	private Integer receiverAccountId;
+
 	public Integer getId() {
 		return id;
 	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
 	public Double getValue() {
 		return value;
 	}
+
 	public void setValue(Double value) {
 		this.value = value;
 	}
+
 	public LocalDateTime getDateOfTransaction() {
 		return dateOfTransaction;
 	}
+
 	public void setDateOfTransaction(LocalDateTime dateOfTransaction) {
 		this.dateOfTransaction = dateOfTransaction;
 	}
+
 	public TransactionType getTransactionType() {
 		return transactionType;
 	}
+
 	public void setTransactionType(TransactionType transactionType) {
 		this.transactionType = transactionType;
 	}
-	public String getPayer() {
-		return payer;
+
+	public Integer getPayerAccountId() {
+		return payerAccountId;
 	}
-	public void setPayer(String payer) {
-		this.payer = payer;
+
+	public void setPayerAccountId(Integer payerAccountId) {
+		this.payerAccountId = payerAccountId;
 	}
-	public String getReceiver() {
-		return receiver;
+
+	public Integer getReceiverAccountId() {
+		return receiverAccountId;
 	}
-	public void setReceiver(String receiver) {
-		this.receiver = receiver;
+
+	public void setReceiverAccountId(Integer receiverAccountId) {
+		this.receiverAccountId = receiverAccountId;
 	}
-	
-	
+
 }

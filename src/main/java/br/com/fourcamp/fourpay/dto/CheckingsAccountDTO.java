@@ -8,7 +8,7 @@ public class CheckingsAccountDTO {
 	private String number;
 	private Double balance;
 	private Client client;
-	private Double maintenanceRate;
+	private Double maintenanceRate = 0.50;
 
 	public Integer getId() {
 		return id;

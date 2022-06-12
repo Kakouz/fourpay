@@ -7,7 +7,7 @@ public class SavingsAccountDTO {
 	private String number;
 	private Double balance;
 	private Client client;
-	private Double yieldRate;
+	private Double yieldRate = 0.50;
 
 	public Integer getId() {
 		return id;

@@ -2,8 +2,8 @@ package br.com.fourcamp.fourpay.interfaces;
 
 public interface TransactionInterface {
 	
-	public void SendMoney();
+	public boolean sendMoney(Integer payerAccountId, Integer receiverAccountId, Double value);
 	
-	public void discountRates();
+	public boolean discountRates(Integer accountId);
 	
 }
