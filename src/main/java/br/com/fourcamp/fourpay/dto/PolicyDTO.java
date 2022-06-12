@@ -1,62 +1,24 @@
 package br.com.fourcamp.fourpay.dto;
 
-import br.com.fourcamp.fourpay.model.CreditCard;
-import br.com.fourcamp.fourpay.model.Insurance;
-
 public class PolicyDTO {
-	private Integer id;
-	private Integer policyNumber;
-	private CreditCard creditCard;
-	private Insurance insurance;
-	private Double policyValue;
-	private String descriptionOfConditions;
 
-	public Integer getId() {
-		return id;
+	private Integer creditCardId;
+	private Integer insuranceId;
+
+	public Integer getCreditCardId() {
+		return creditCardId;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setCreditCardId(Integer creditCardId) {
+		this.creditCardId = creditCardId;
 	}
 
-	public Integer getPolicyNumber() {
-		return policyNumber;
+	public Integer getInsuranceId() {
+		return insuranceId;
 	}
 
-	public void setPolicyNumber(Integer policyNumber) {
-		this.policyNumber = policyNumber;
-	}
-
-	public CreditCard getCreditCard() {
-		return creditCard;
-	}
-
-	public void setCreditCard(CreditCard creditCard) {
-		this.creditCard = creditCard;
-	}
-
-	public Insurance getInsurance() {
-		return insurance;
-	}
-
-	public void setInsurance(Insurance insurance) {
-		this.insurance = insurance;
-	}
-
-	public Double getPolicyValue() {
-		return policyValue;
-	}
-
-	public void setPolicyValue(Double policyValue) {
-		this.policyValue = policyValue;
-	}
-
-	public String getDescriptionOfConditions() {
-		return descriptionOfConditions;
-	}
-
-	public void setDescriptionOfConditions(String descriptionOfConditions) {
-		this.descriptionOfConditions = descriptionOfConditions;
+	public void setInsuranceId(Integer insuranceId) {
+		this.insuranceId = insuranceId;
 	}
 
 }

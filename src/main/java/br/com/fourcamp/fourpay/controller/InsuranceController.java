@@ -48,4 +48,8 @@ public class InsuranceController {
 		BeanUtils.copyProperties(insuranceDto, insurance);
 		return insuranceService.updateInsurance(insurance);
 	}
+
+	public Insurance getInsuranceById(Integer insuranceId) {
+		return insuranceService.getInsuranceById(insuranceId);
+	}
 }

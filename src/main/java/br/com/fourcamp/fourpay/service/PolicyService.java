@@ -19,8 +19,12 @@ public class PolicyService {
 	}
 
 	public Policy save(Policy policy) {
+		if (policy.getCreditCard() == null || policy.getInsurance() == null) {
+			return null;
+		}
 		return policyRepository.save(policy);
 	}
+
 	public Policy updatePolicy(Policy policy) {
 		return policyRepository.save(policy);
 	}

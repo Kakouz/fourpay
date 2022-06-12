@@ -25,4 +25,14 @@ public class InsuranceService {
 	public Insurance updateInsurance(Insurance insurance) {
 		return insuranceRepository.save(insurance);
 	}
+
+	public Insurance getInsuranceById(Integer insuranceId) {
+		List<Insurance> insuranceList = findAll();
+		for (Insurance insurance : insuranceList) {
+			if(insurance.getId().equals(insuranceId)) {
+				return insurance;
+			}
+		}
+		return null;
+	}
 }

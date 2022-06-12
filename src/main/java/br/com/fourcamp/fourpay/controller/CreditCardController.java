@@ -84,4 +84,8 @@ public class CreditCardController {
 		return creditCardService.updateCard(creditCard);
 	}
 
+	public CreditCard getCardById(Integer creditCardId) {
+		return creditCardService.getCardById(creditCardId);
+	}
+
 }

@@ -1,6 +1,8 @@
 package br.com.fourcamp.fourpay.model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,7 +18,7 @@ public class Policy implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	private Integer policyNumber;
+	private UUID policyNumber;
 	@OneToOne
 	@JoinColumn(name = "card_id", referencedColumnName = "id")
 	private CreditCard creditCard;
@@ -25,43 +27,62 @@ public class Policy implements Serializable {
 	private Insurance insurance;
 	private Double policyValue;
 	private String descriptionOfConditions;
+	private LocalDate contractStartDate;
+
 	public Integer getId() {
 		return id;
 	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Integer getPolicyNumber() {
+
+	public UUID getPolicyNumber() {
 		return policyNumber;
 	}
-	public void setPolicyNumber(Integer policyNumber) {
-		this.policyNumber = policyNumber;
+
+	public void setPolicyNumber(UUID uuid) {
+		this.policyNumber = uuid;
 	}
+
 	public CreditCard getCreditCard() {
 		return creditCard;
 	}
+
 	public void setCreditCard(CreditCard creditCard) {
 		this.creditCard = creditCard;
 	}
+
 	public Insurance getInsurance() {
 		return insurance;
 	}
+
 	public void setInsurance(Insurance insurance) {
 		this.insurance = insurance;
 	}
+
 	public Double getPolicyValue() {
 		return policyValue;
 	}
+
 	public void setPolicyValue(Double policyValue) {
 		this.policyValue = policyValue;
 	}
+
 	public String getDescriptionOfConditions() {
 		return descriptionOfConditions;
 	}
+
 	public void setDescriptionOfConditions(String descriptionOfConditions) {
 		this.descriptionOfConditions = descriptionOfConditions;
 	}
-	
-	
-	
+
+	public LocalDate getContractStartDate() {
+		return contractStartDate;
+	}
+
+	public void setContractStartDate(LocalDate contractStartDate) {
+		this.contractStartDate = contractStartDate;
+	}
+
 }

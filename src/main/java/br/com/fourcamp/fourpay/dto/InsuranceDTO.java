@@ -1,17 +1,9 @@
 package br.com.fourcamp.fourpay.dto;
 
 public class InsuranceDTO {
-	private Integer id;
+
 	private String InsuranceName;
 	private String rules;
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
 
 	public String getInsuranceName() {
 		return InsuranceName;
