@@ -1,58 +1,24 @@
 package br.com.fourcamp.fourpay.dto;
 
-import br.com.fourcamp.fourpay.model.Account;
-
 public class CreditCardDTO {
 
-	private Integer id;
-	private String number;
-	private String flag;
 	private String password;
-	private Boolean isActive;
-	private Account account;
-	private Double creditLimit;
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	public String getNumber() {
-		return number;
-	}
-	public void setNumber(String number) {
-		this.number = number;
-	}
-	public String getFlag() {
-		return flag;
-	}
-	public void setFlag(String flag) {
-		this.flag = flag;
-	}
+	private Integer accountId;
+
 	public String getPassword() {
 		return password;
 	}
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public Boolean getIsActive() {
-		return isActive;
+
+	public Integer getAccountId() {
+		return accountId;
 	}
-	public void setIsActive(Boolean isActive) {
-		this.isActive = isActive;
+
+	public void setAccountId(Integer accountId) {
+		this.accountId = accountId;
 	}
-	public Account getAccount() {
-		return account;
-	}
-	public void setAccount(Account account) {
-		this.account = account;
-	}
-	public Double getCreditLimit() {
-		return creditLimit;
-	}
-	public void setCreditLimit(Double creditLimit) {
-		this.creditLimit = creditLimit;
-	}
-	
-	
+
 }

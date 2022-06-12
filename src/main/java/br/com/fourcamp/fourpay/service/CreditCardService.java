@@ -21,8 +21,19 @@ public class CreditCardService {
 	public CreditCard save(CreditCard creditCard) {
 		return creditCardRepository.save(creditCard);
 	}
-	
+
 	public CreditCard updateCard(CreditCard creditCard) {
 		return creditCardRepository.save(creditCard);
+	}
+
+	public CreditCard getCardById(Integer id) {
+		List<CreditCard> cardList = findAll();
+
+		for (CreditCard card : cardList) {
+			if (card.getAccount().getId().equals(id));
+			return card;
+		}
+
+		return null;
 	}
 }
