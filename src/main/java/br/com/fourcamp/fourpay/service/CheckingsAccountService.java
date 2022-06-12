@@ -19,6 +19,14 @@ public class CheckingsAccountService {
 	}
 
 	public CheckingsAccount save(CheckingsAccount checkingsAccount) {
+		List<CheckingsAccount> accountList = findAll();
+		
+		for (CheckingsAccount item : accountList) {
+			if(item.getClient().getId().equals(checkingsAccount.getClient().getId())) {
+				return null;
+			}
+		}
+		
 		return checkingsAccountRepository.save(checkingsAccount);
 	}
 

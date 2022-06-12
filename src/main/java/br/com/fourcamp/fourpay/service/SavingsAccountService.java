@@ -19,6 +19,13 @@ public class SavingsAccountService {
 	}
 
 	public SavingsAccount save(SavingsAccount savingsAccount) {
+		List<SavingsAccount> accountList = findAll();
+		
+		for (SavingsAccount item : accountList) {
+			if(item.getClient().getId().equals(savingsAccount.getClient().getId())) {
+				return null;
+			}
+		}
 		return savingsAccountRepository.save(savingsAccount);
 	}
 
