@@ -26,4 +26,15 @@ public class ClientService {
 		return clientRepository.save(client);
 	}
 
+	public Client FindClientById(Integer clientId) {
+		List<Client> listClients = findAll();
+		
+		for (Client item : listClients) {
+			if(item.getId().equals(clientId)) {
+				return item;
+			}
+		}
+		return null;
+	}
+
 }

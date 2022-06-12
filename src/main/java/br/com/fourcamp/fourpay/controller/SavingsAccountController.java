@@ -20,32 +20,40 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @RequestMapping("/account/savings")
-@Tag(name="API REST Savings Account")
+@Tag(name = "API REST Savings Account")
 @CrossOrigin(origins = "*")
 public class SavingsAccountController {
 
 	@Autowired
 	SavingsAccountService savingsAccountService;
-	
+	@Autowired
+	ClientController clientController;
+
 	@GetMapping
 	@Operation(summary = "Retorna todas as contas poupança")
 	public List<SavingsAccount> getSavingsAccount() {
 		return savingsAccountService.findAll();
 	}
-	
+
 	@PostMapping
 	@Operation(summary = "Cria uma nova conta poupança")
 	public SavingsAccount createSavingsAccount(@RequestBody SavingsAccountDTO savingsAccountDto) {
 		SavingsAccount savingsAccount = new SavingsAccount();
 		BeanUtils.copyProperties(savingsAccountDto, savingsAccount);
+		savingsAccount.setClient(clientController.getClientById(savingsAccountDto.getClientId()));
+		if (savingsAccount.getClient() == null) {
+			return null;
+		}
+		savingsAccount.setNumber(savingsAccount.getClient().getId() + 2000);
+
 		return savingsAccountService.save(savingsAccount);
 	}
-	
-	@PutMapping
-	@Operation(summary = "Atualiza uma conta poupança")
-	public SavingsAccount updateSavingsAccount(@RequestBody SavingsAccountDTO savingsAccountDto) {
-		SavingsAccount savingsAccount = new SavingsAccount();
-		BeanUtils.copyProperties(savingsAccountDto, savingsAccount);
-		return savingsAccountService.updateSavingsAccount(savingsAccount);
-	}
+
+//	@PutMapping
+//	@Operation(summary = "Atualiza uma conta poupança")
+//	public SavingsAccount updateSavingsAccount(@RequestBody SavingsAccountDTO savingsAccountDto) {
+//		SavingsAccount savingsAccount = new SavingsAccount();
+//		BeanUtils.copyProperties(savingsAccountDto, savingsAccount);
+//		return savingsAccountService.updateSavingsAccount(savingsAccount);
+//	}
 }

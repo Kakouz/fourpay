@@ -1,30 +1,10 @@
 package br.com.fourcamp.fourpay.dto;
 
-import br.com.fourcamp.fourpay.model.Client;
-
 public class CheckingsAccountDTO {
 
-	private Integer id;
-	private String number;
 	private Double balance;
-	private Client client;
-	private Double maintenanceRate = 0.50;
+	private Integer clientId;
 
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getNumber() {
-		return number;
-	}
-
-	public void setNumber(String number) {
-		this.number = number;
-	}
 
 	public Double getBalance() {
 		return balance;
@@ -34,20 +14,12 @@ public class CheckingsAccountDTO {
 		this.balance = balance;
 	}
 
-	public Client getClient() {
-		return client;
+	public Integer getClientId() {
+		return clientId;
 	}
 
-	public void setClient(Client client) {
-		this.client = client;
-	}
-
-	public Double getMaintenanceRate() {
-		return maintenanceRate;
-	}
-
-	public void setMaintenanceRate(Double maintenanceRate) {
-		this.maintenanceRate = maintenanceRate;
+	public void setClientId(Integer client) {
+		this.clientId = client;
 	}
 
 }

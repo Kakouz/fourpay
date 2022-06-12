@@ -16,7 +16,7 @@ public class Account implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	protected Integer id;
-	protected String number;
+	protected Integer number;
 	protected Double balance;
 	@ManyToOne
 	@JoinColumn(name = "client_id", referencedColumnName = "id")
@@ -30,11 +30,11 @@ public class Account implements Serializable {
 		this.id = id;
 	}
 
-	public String getNumber() {
+	public Integer getNumber() {
 		return number;
 	}
 
-	public void setNumber(String number) {
+	public void setNumber(Integer number) {
 		this.number = number;
 	}
 

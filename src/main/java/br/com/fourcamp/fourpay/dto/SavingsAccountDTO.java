@@ -1,29 +1,9 @@
 package br.com.fourcamp.fourpay.dto;
 
-import br.com.fourcamp.fourpay.model.Client;
-
 public class SavingsAccountDTO {
-	private Integer id;
-	private String number;
+
 	private Double balance;
-	private Client client;
-	private Double yieldRate = 0.50;
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getNumber() {
-		return number;
-	}
-
-	public void setNumber(String number) {
-		this.number = number;
-	}
+	private Integer clientId;
 
 	public Double getBalance() {
 		return balance;
@@ -33,20 +13,12 @@ public class SavingsAccountDTO {
 		this.balance = balance;
 	}
 
-	public Client getClient() {
-		return client;
+	public Integer getClientId() {
+		return clientId;
 	}
 
-	public void setClient(Client client) {
-		this.client = client;
-	}
-
-	public Double getYieldRate() {
-		return yieldRate;
-	}
-
-	public void setYieldRate(Double yieldRate) {
-		this.yieldRate = yieldRate;
+	public void setClientId(Integer client) {
+		this.clientId = client;
 	}
 
 }

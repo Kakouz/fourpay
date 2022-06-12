@@ -58,4 +58,8 @@ public class ClientController {
 		client.setId(id);
 		return ResponseEntity.status(HttpStatus.OK).body(clientService.updateClient(client));
 	}
+
+	public Client getClientById(Integer clientId) {
+		return clientService.FindClientById(clientId);
+	}
 }

@@ -26,6 +26,8 @@ public class CheckingsAccountController {
 
 	@Autowired
 	CheckingsAccountService checkingsAccountService;
+	@Autowired
+	ClientController clientController;
 	
 	@GetMapping
 	@Operation(summary = "Retorna todos as contas correntes")
@@ -38,14 +40,20 @@ public class CheckingsAccountController {
 	public CheckingsAccount createCheckingsAccount(@RequestBody CheckingsAccountDTO checkingsAccountDTO) {
 		CheckingsAccount checkingsAccount = new CheckingsAccount();
 		BeanUtils.copyProperties(checkingsAccountDTO, checkingsAccount);
+		checkingsAccount.setClient(clientController.getClientById(checkingsAccountDTO.getClientId()));
+		if(checkingsAccount.getClient() == null) {
+			return null;
+		}		
+		checkingsAccount.setNumber(checkingsAccount.getClient().getId() + 1000);
+		
 		return checkingsAccountService.save(checkingsAccount);
 	}
 	
-	@PutMapping
-	@Operation(summary = "Atualiza uma conta corrente")
-	public CheckingsAccount updateSavingsAccount(@RequestBody CheckingsAccountDTO checkingsAccountDTO) {
-		CheckingsAccount checkingsAccount = new CheckingsAccount();
-		BeanUtils.copyProperties(checkingsAccountDTO, checkingsAccount);
-		return checkingsAccountService.updateCheckingsAccount(checkingsAccount);
-	}
+//	@PutMapping
+//	@Operation(summary = "Atualiza uma conta corrente")
+//	public CheckingsAccount updateSavingsAccount(@RequestBody CheckingsAccountDTO checkingsAccountDTO) {
+//		CheckingsAccount checkingsAccount = new CheckingsAccount();
+//		BeanUtils.copyProperties(checkingsAccountDTO, checkingsAccount);
+//		return checkingsAccountService.updateCheckingsAccount(checkingsAccount);
+//	}
 }
