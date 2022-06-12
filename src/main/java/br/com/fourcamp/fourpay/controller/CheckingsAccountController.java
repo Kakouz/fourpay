@@ -45,7 +45,6 @@ public class CheckingsAccountController {
 			return null;
 		}		
 		checkingsAccount.setNumber(checkingsAccount.getClient().getId() + 1000);
-		
 		return checkingsAccountService.save(checkingsAccount);
 	}
 	

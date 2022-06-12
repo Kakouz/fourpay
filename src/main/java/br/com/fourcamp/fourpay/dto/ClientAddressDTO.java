@@ -4,8 +4,6 @@ import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import br.com.fourcamp.fourpay.enums.ClientType;
-
 public class ClientAddressDTO {
 	
 	
@@ -15,7 +13,6 @@ public class ClientAddressDTO {
 	private String email;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
 	private LocalDate birthDate;
-	private ClientType clientType;
 	private String password;
 	private Double monthlyIncome;
 	
@@ -87,12 +84,6 @@ public class ClientAddressDTO {
 	}
 	public void setBirthDate(LocalDate birthDate) {
 		this.birthDate = birthDate;
-	}
-	public ClientType getClientType() {
-		return clientType;
-	}
-	public void setClientType(ClientType clientType) {
-		this.clientType = clientType;
 	}
 	public String getPassword() {
 		return password;

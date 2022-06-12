@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.fourcamp.fourpay.dto.ClientAddressDTO;
+import br.com.fourcamp.fourpay.enums.ClientType;
 import br.com.fourcamp.fourpay.model.Address;
 import br.com.fourcamp.fourpay.model.Client;
 import br.com.fourcamp.fourpay.service.ClientService;
@@ -47,9 +48,20 @@ public class ClientController {
 		BeanUtils.copyProperties(clientAddressDTO, address);
 		client.setAddress(address);
 		addressController.saveAddressFromClientCreation(address);
+		client.setClientType(determineClientType(client.getMonthlyIncome()));
 		return ResponseEntity.status(HttpStatus.OK).body(clientService.save(client));
 	}
 	
+	private ClientType determineClientType(Double monthlyIncome) {
+		if(monthlyIncome < 2000) {
+			return ClientType.BASIC;
+		} else if (monthlyIncome < 5000) {
+			return ClientType.PREMIUM;
+		} else {
+			return ClientType.SUPER;
+		}
+	}
+
 	@PutMapping("/{id}")
 	@Operation(summary = "Atualiza um cliente pelo id")
 	public ResponseEntity<Object> updateClient(@PathVariable Integer id, @RequestBody ClientAddressDTO clientAddressDTO) {

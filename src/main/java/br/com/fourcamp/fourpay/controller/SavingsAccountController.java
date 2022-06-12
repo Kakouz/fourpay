@@ -45,7 +45,6 @@ public class SavingsAccountController {
 			return null;
 		}
 		savingsAccount.setNumber(savingsAccount.getClient().getId() + 2000);
-
 		return savingsAccountService.save(savingsAccount);
 	}
 
